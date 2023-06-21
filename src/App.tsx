@@ -1,7 +1,14 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { RadioBrowser } from "./RadioBrowser"
+
 function App() {
+  const queryClient = new QueryClient()
+
   return (
     <>
-      <h1>a</h1>
+      <QueryClientProvider client={queryClient}>
+        <RadioBrowser />
+      </QueryClientProvider>
     </>
   )
 }

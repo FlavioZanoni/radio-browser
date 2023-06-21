@@ -1,12 +1,24 @@
+import React from "react"
 import { RadioStation } from "../../lib/api/types"
 import { RadioCard } from "../RadioCard"
 
-export const RadioList = ({ list }: { list: RadioStation[] }) => {
+type Props = {
+  favorites: RadioStation[]
+  setFavorites: React.Dispatch<React.SetStateAction<RadioStation[]>>
+}
+
+export const RadioList: React.FC<Props> = ({ favorites, setFavorites }) => {
   return (
     <>
-      {list.length ? (
-        list.map((station) => {
-          return <RadioCard key={station.stationuuid} station={station} />
+      {favorites.length ? (
+        favorites.map((station) => {
+          return (
+            <RadioCard
+              setFavorites={setFavorites}
+              key={station.stationuuid}
+              station={station}
+            />
+          )
         })
       ) : (
         <p>

@@ -20,29 +20,42 @@ export const RadioBrowser = () => {
   }, [])
 
   useEffect(() => {
-    if (!favorites) return
+    if (!favorites.length) return
 
     localStorage.setItem("favorites", JSON.stringify(favorites))
   }, [favorites])
 
   return (
-    <div className="w-full h-full flex flex-row gap-4">
+    <div
+      className={`w-full h-screen flex gap-4 p-4 ${!isDesktop && "flex-col"} `}
+    >
       {!isDesktop ? (
-        <button onClick={() => setShowSearch(!showSearch)}>
-          {/* Sandwich menu icon */} ---
+        <button
+          className="flex justify-end"
+          onClick={() => setShowSearch(!showSearch)}
+        >
+          <img className="w-6" src="/icons/menu.svg" alt="menu" />
         </button>
       ) : (
-        <div className="w-full">
-          <SearchBar setFavorites={setFavorites} />
+        <div className={isDesktop ? "w-1/4" : "w-full"}>
+          <SearchBar favorites={favorites} setFavorites={setFavorites} />
         </div>
       )}
 
-      <div className="w-full">
+      <div
+        className={`${isDesktop ? "w-3/4 p-4" : "w-full "} flex flex-col gap-2`}
+      >
+        <h1 className="text-xl font-semibold">Favoritos</h1>
+
         <RadioList setFavorites={setFavorites} favorites={favorites} />
       </div>
 
       {showSearch && !isDesktop && (
-        <SearchBar setFavorites={setFavorites} setShowSearch={setShowSearch} />
+        <SearchBar
+          favorites={favorites}
+          setFavorites={setFavorites}
+          setShowSearch={setShowSearch}
+        />
       )}
     </div>
   )

@@ -32,7 +32,7 @@ export const SearchBar: React.FC<Props> = ({
       {setShowSearch && (
         <div className="w-full flex justify-end">
           <button onClick={() => setShowSearch(false)}>
-            <img className="w-6" src="/icons/close.svg" alt="menu" />
+            <img className="w-6" src="/icons/close.svg" alt="fechar" />
           </button>
         </div>
       )}
@@ -82,10 +82,14 @@ export const SearchBar: React.FC<Props> = ({
                     <img
                       className="w-6"
                       src="/icons/heart_full.svg"
-                      alt="salvar"
+                      alt="desfavoritar"
                     />
                   ) : (
-                    <img className="w-6" src="/icons/heart.svg" alt="salvar" />
+                    <img
+                      className="w-6"
+                      src="/icons/heart.svg"
+                      alt="favoritar"
+                    />
                   )}
                 </button>
               </div>

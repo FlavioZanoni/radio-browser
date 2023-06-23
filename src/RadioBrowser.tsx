@@ -26,7 +26,7 @@ export const RadioBrowser = () => {
   }, [favorites])
 
   return (
-    <div
+    <main
       className={`w-full h-screen flex gap-4 p-4 ${!isDesktop && "flex-col"} `}
     >
       {!isDesktop ? (
@@ -37,18 +37,18 @@ export const RadioBrowser = () => {
           <img className="w-6" src="/icons/menu.svg" alt="menu" />
         </button>
       ) : (
-        <div className={isDesktop ? "w-1/4" : "w-full"}>
+        <section className={isDesktop ? "w-1/4" : "w-full"}>
           <SearchBar favorites={favorites} setFavorites={setFavorites} />
-        </div>
+        </section>
       )}
 
-      <div
+      <section
         className={`${isDesktop ? "w-3/4 p-4" : "w-full "} flex flex-col gap-2`}
       >
         <h1 className="text-xl font-semibold">Favoritos</h1>
 
         <RadioList setFavorites={setFavorites} favorites={favorites} />
-      </div>
+      </section>
 
       {showSearch && !isDesktop && (
         <SearchBar
@@ -57,6 +57,6 @@ export const RadioBrowser = () => {
           setShowSearch={setShowSearch}
         />
       )}
-    </div>
+    </main>
   )
 }

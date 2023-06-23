@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import React from "react"
+import React, { useState } from "react"
 import { getRadioStations } from "../../lib/api/api"
 import { RadioStation } from "../../lib/api/types"
 
@@ -14,8 +14,8 @@ export const SearchBar: React.FC<Props> = ({
   setFavorites,
   favorites,
 }) => {
-  const [search, setSearch] = React.useState("")
-  const [page, setPage] = React.useState(0)
+  const [search, setSearch] = useState("")
+  const [page, setPage] = useState(0)
 
   const { data, isLoading } = useQuery(["stations", search, page], () =>
     getRadioStations(search, page)
